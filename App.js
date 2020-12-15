@@ -2,10 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyparser = require("body-parser");
-var connection = mongoose.connect(
-  "mongodb+srv://admin:3571592486@cluster0.ebc1x.mongodb.net/hmb?retryWrites=true&w=majority",
-  { useNewUrlParser: true, useUnifiedTopology: true }
-);
+var connection = mongoose.connect(process.env.CONNECTION, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   history: String,
@@ -36,8 +36,7 @@ app.post("/history", async (req, res) => {
   });
 });
 
-app.post("add/history", (req, res) => {  
-
+app.post("add/history", (req, res) => {
   const novo = History.create({
     history: "greetings",
     image:
@@ -47,6 +46,6 @@ app.post("add/history", (req, res) => {
   res.send(novo);
 });
 
-app.listen(process.env.PORT|| 4000, () => {
+app.listen(process.env.PORT || 4000, () => {
   console.log("server on");
 });
