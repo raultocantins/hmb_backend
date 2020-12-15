@@ -47,6 +47,6 @@ app.post("add/history", (req, res) => {
   res.send(novo);
 });
 
-app.listen("8080", () => {
+app.listen(process.env.PORT|| 4000, () => {
   console.log("server on");
 });
