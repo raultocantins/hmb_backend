@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyparser = require("body-parser");
-var connection = mongoose.connect(process.env.CONNECTION, {
+var connection = mongoose.connect("mongodb+srv://admin:3571592486@cluster0.ebc1x.mongodb.net/hmb?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
